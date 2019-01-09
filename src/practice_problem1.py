@@ -6,7 +6,7 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
+         and Yicheng Yang.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
@@ -42,7 +42,7 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    # run_test_double()
+    run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -64,6 +64,15 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
+        if len(contents) <= volume:
+            self.contents = contents
+            self.volume = volume
+        else:
+            self.contents = ''
+            self.volume = volume
+
+
+
         """
         What comes in:
           -- self
@@ -95,7 +104,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # done: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -105,6 +114,25 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def append_string(self, additional_contents):
+        if len(additional_contents) + len(self.contents) <= self.volume:
+            self.contents += additional_contents
+            return ''
+        else:
+            LOLOL = self.volume - len(self.contents)
+            PRPRPR = ''
+            for k in range(LOLOL):
+                self.contents += additional_contents[k]
+            for k in range(len(additional_contents)-LOLOL):
+                PRPRPR += additional_contents[k+LOLOL]
+            return PRPRPR
+
+
+
+
+
+
+
+
         """
         What comes in:
           -- self
@@ -136,7 +164,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -160,6 +188,19 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def double(self):
+        if self.volume >= len(self.contents) * 2:
+            self.contents = self.contents * 2
+            return ''
+        else:
+            YEAH = self.contents
+            YOUTUBE = self.volume - len(self.contents)
+            for k in range(0, YOUTUBE):
+                self.contents += self.contents[k]
+            LOL = ''
+            for k in range(YOUTUBE, len(YEAH)):
+                LOL += self.contents[k]
+            return LOL
+
         """
         What comes in:
           -- self
@@ -193,7 +234,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -207,6 +248,7 @@ class Box(object):
         #######################################################################
 
     def shrink(self, new_volume):
+        
         """
         What comes in:
           -- self
