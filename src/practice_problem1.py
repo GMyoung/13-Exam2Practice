@@ -199,6 +199,7 @@ class Box(object):
             LOL = ''
             for k in range(YOUTUBE, len(YEAH)):
                 LOL += self.contents[k]
+
             return LOL
 
         """
@@ -248,7 +249,7 @@ class Box(object):
         #######################################################################
 
     def shrink(self, new_volume):
-        
+
         """
         What comes in:
           -- self
